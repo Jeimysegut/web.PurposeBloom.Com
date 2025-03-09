@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurposeBloom.com</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: rgba(240, 57, 131, 0.7);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .menu a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .menu a:hover {
+            color: #000000;
+        }
+        
+        .hero {
+            height: 80vh;
+            background-image: url('IMG/FONDO 3.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        
+        .hero-content {
+            background-color: rgba(229, 124, 149, 0.393);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff0073a0;
+            color: #000000;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ffffff;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            background-image: url('IMG/IMG PAGINA 2.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            min-height: 400px;
+        }
+        
+        .products {
+            background-color: #d65e9489;
+        }
+        
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(219, 89, 135, 0.888);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .add-to-cart {
+            background-color: #f8f8f8;
+            color: #333;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e346ce66;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #e9486b;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            width: 100%;
+        }
+        
+        /* Carrito de compras */
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(8, 8, 8, 0.1);
+            z-index: 200;
+            transition: right 0.3s;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .cart-panel.open {
+            right: 0;
+        }
+        
+        .close-cart {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cart-title {
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            color: #666;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .quantity-btn {
+            background: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .item-quantity {
+            margin: 0 0.5rem;
+        }
+        
+        .remove-item {
+            color: #ff0000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: #e44376c2;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #a4a3a075;
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .cart-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PurposeBloom</div>
+            <ul class="menu">
+                <li><a href="#inicio">inicio</a></li>
+                <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Florece en tu Propósito con Purpose Bloom</h1>
+            <p>Descubre arte y diseños únicos que reflejan el amor de Dios, inspirándote a crecer y florecer en tu mejor versión en Cristo.</p>
+            <a href="#productos" class="btn">Ver Colección</a>
+        </div>
+    </section>
+
+    <section id="quienes-somos">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Nuestra Historia</h3>
+                <p>En Purpose Bloom, creemos que cada persona tiene un propósito divino y un camino de crecimiento en Cristo. Nacimos con la visión de reflejar el amor de Dios a través de arte y diseños inspiradores que ayuden a otros a florecer en su mejor versión.</p>
+                <p>Cada una de nuestras creaciones es más que una simple pieza decorativa: es un recordatorio de fe, esperanza y transformación. Nos esforzamos por ofrecer diseños de alta calidad que no solo embellezcan espacios, sino que también transmitan un mensaje de amor y propósito.</p>
+                <h3>Nuestra Misión </h3>
+                <p>Reflejar el amor de Dios en cada detalle e inspirar a las personas a florecer en su mejor versión en Cristo.</p>
+                <h3>Nuestra Visión </h3>
+                <p>Ayudar a otros a descubrir su propósito y reflejar su belleza interior y exterior en Cristo.</p>
+                <h3>Nuestro Versículo Inspirador </h3>
+                <p>"Yo soy la vid, vosotros los pámpanos; el que permanece en mí, y yo en él, éste lleva mucho fruto."
+                    — Juan 15:5</p>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
+    <section id="productos" class="products">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('IMG/cuadro 1..jpg')"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Cuadro Salmo 23:1 – Fe y Provisión</h3>
+                    <p class="product-description">Este hermoso cuadro representa la promesa de provisión y cuidado divino. Salmo 23:1 nos recuerda que, con Dios como nuestro guía, nunca nos faltará nada. Un mensaje de fe y confianza para llenar tu hogar de paz y esperanza.</p>
+                    <p class="product-price">$60.000</p>
+                    <button class="add-to-cart" onclick="addToCart('Cuadro Salmo 23:1 – Fe y Provisión', 60000, 'IMG/cuadro 1..jpg')">Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('IMG/CUADRO 2.jpg')"></div>
+                <div class="product-info">
+                    <h3 class="product-title">"Yo y mi casa serviremos a Jehová" – Josué 24:15</h3>
+                    <p class="product-description"> Este cuadro es un recordatorio de compromiso y fe, inspirado en Josué 24:15. Una declaración poderosa de fidelidad a Dios para bendecir tu hogar con su presencia y propósito" – Josué 24:15.</p>
+                    <p class="product-price">$60.000</p>
+                    <button class="add-to-cart" onclick="addToCart('yo y mi casa serviremos a jehova- Josue 24:15', 60000, 'IMG/CUADRO 2.jpg')">Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('IMG/CUADRO 3.jpg')"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Deléitate en el Señor" – Salmo 37:4</h3>
+                    <p class="product-description">Este hermoso cuadro refleja la promesa de Dios: cuando ponemos nuestra alegría en Él, Él nos concede los deseos de nuestro corazón. Un mensaje de fe y esperanza para llenar tu hogar de paz y confianza.</p>
+                    <p class="product-price">$60.000</p>
+                    <button class="add-to-cart" onclick="addToCart('Deléitate en el Señor – Salmo 37:4', 60000, 'IMG/CUADRO 3.jpg')">Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('IMG/CUADRO 4.jpg')"></div>
+                <div class="product-info">
+                    <h3 class="product-title">Todo lo puedo en Cristo – Filipenses 4:13</h3>
+                    <p class="product-description">Este cuadro transmite un poderoso mensaje de fe y confianza: con Cristo, no hay límites para lo que podemos lograr. Un recordatorio inspirador para fortalecer tu espíritu cada día.</p>
+                    <p class="product-price">$60.000</p>
+                    <button class="add-to-cart" onclick="addToCart('Todo lo puedo en Cristo – Filipenses 4:13', 60000, 'IMG/CUADRO 4.jpg')">Añadir al Carrito</button>
+                </div>'
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">PurposeBloom</h3>
+                <p>Transformando espacios con arte único y original.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Contacto</h3>
+                <p>📱 WhatsApp: +57 304 305 0632</p>
+                <p>📧 Email: Andreacserranog25@gmail.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 PurposeBloom. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="cart-panel" id="cartPanel">
+        <button class="close-cart" onclick="toggleCart()">✕</button>
+        <h2 class="cart-title">Tu Carrito</h2>
+        <div class="cart-items" id="cartItems">
+            <!-- Los items del carrito se añadirán aquí dinámicamente -->
+        </div>
+        <div class="cart-total" id="cartTotal">Total: $0</div>
+        <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
+    </div>
+
+    <script>
+        let cart = [];
+        let cartCount = 0;
+        
+        function toggleCart() {
+            const cartPanel = document.getElementById('cartPanel');
+            cartPanel.classList.toggle('open');
+        }
+        
+        function addToCart(name, price, image) {
+            // Verificar si el producto ya está en el carrito
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+        
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            updateCart();
+        }
+        
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                removeFromCart(index);
+            }
+            updateCart();
+        }
+        
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCountElement = document.querySelector('.cart-count');
+            
+            // Limpiar el contenedor de items
+            cartItems.innerHTML = '';
+            
+            // Actualizar contador del carrito
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = cartCount;
+            
+            // Si no hay items en el carrito
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Tu carrito está vacío</p>';
+                cartTotal.textContent = 'Total: $0';
+                return;
+            }
+            
+            // Calcular el total
+            let total = 0;
+            
+            // Añadir cada item al carrito
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                            <span class="item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">✕</button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Actualizar el total
+            cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+        }
+        
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            // Preparar el mensaje para WhatsApp
+            let message = '¡Hola! Quiero hacer el siguiente pedido:\n\n';
+            
+            cart.forEach(item => {
+                message += `▪️ ${item.quantity}x ${item.name} - $${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n💰 Total: $${total.toLocaleString()}`;
+            
+            // Codificar el mensaje para la URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Abrir WhatsApp con el mensaje
+            window.open(`https://wa.me/573043050632?text=${encodedMessage}`, '_blank');
+            
+            // Limpiar el carrito después de enviar
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>
